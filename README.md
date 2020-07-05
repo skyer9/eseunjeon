@@ -21,3 +21,13 @@ sbt -J-Xmx2G "runMain org.bitbucket.eunjeon.seunjeon.DictBuilder"
 # jar 생성
 sbt package
 ```
+
+## elasticsearch 플러그인 개발
+
+```bash
+# 플러그인 zip 생성
+sbt
+> project elasticsearch
+> esZip
+> exit
+```
