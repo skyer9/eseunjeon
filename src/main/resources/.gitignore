@@ -1,4 +1,0 @@
-# Ignore everything in this directory
-dictionary
-# Except this file
-!.gitignore

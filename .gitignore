@@ -1,6 +1,13 @@
 .idea
+
 src/main/target
 mecab-ko-dic*
 target
 project/project
 project/target
+
+eunjeon/src/main/target
+eunjeon/mecab-ko-dic*
+eunjeon/target
+eunjeon/project/project
+eunjeon/project/target
