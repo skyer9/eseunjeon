@@ -1,4 +1,8 @@
-.idea
+build/
+.gradle/
+.idea/
+.git/
+gradle/
 
 src/main/target
 mecab-ko-dic*
