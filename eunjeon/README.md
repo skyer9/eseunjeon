@@ -8,7 +8,7 @@
 
 # 버전확인
 sbt -version
-[info] 1.0.4
+sbt version in this project: 1.3.5
 sbt script version: 1.3.13
 
 # 사전 빌드(mecab-ko-dic/* -> src/main/resources/*.dat)

@@ -68,7 +68,7 @@ dependencies {
 }
 
 task buildPluginZip(type: Zip, dependsOn:[':shadowJar']) {
-    baseName = 'eseunjeon-analyzer-plugin'
+    baseName = 'eseunjeon-analyzer'
     classifier = 'plugin'
     from files(libsDir) {
         into('elasticsearch')
