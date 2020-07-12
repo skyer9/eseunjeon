@@ -3,10 +3,10 @@
 
 lazy val commonSettings = Seq(
   organization := "org.bitbucket.eunjeon",
-  scalaVersion := "2.12.0",   // default
+  scalaVersion := "2.12.10",
   publishMavenStyle := true,
   publishArtifact in Test := false,
-  useGpg := true,
+  //useGpg := true,
   publishTo := {
     val nexus = "https://oss.sonatype.org/"
     if (version.value.trim.endsWith("SNAPSHOT"))
@@ -74,7 +74,7 @@ lazy val elasticsearch = (project in file("elasticsearch")).dependsOn(seunjeon).
   settings(
     name := elasticsearchPluginName,
 
-    scalaVersion := "2.12.0",
+    scalaVersion := "2.12.10",
 
     version := s"${esVersion}.1",
 
