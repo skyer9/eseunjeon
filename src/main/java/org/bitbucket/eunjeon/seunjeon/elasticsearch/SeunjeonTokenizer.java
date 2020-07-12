@@ -5,7 +5,7 @@ import org.apache.lucene.analysis.Tokenizer;
 import org.apache.lucene.analysis.tokenattributes.*;
 import org.apache.lucene.analysis.util.RollingCharBuffer;
 import org.apache.lucene.util.AttributeFactory;
-import org.elasticsearch.common.logging.ESLoggerFactory;
+import org.elasticsearch.common.logging.Loggers;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -29,7 +29,7 @@ public class SeunjeonTokenizer extends Tokenizer {
 
     public SeunjeonTokenizer(TokenizerOptions options) {
         super(AttributeFactory.DEFAULT_ATTRIBUTE_FACTORY);
-        logger = ESLoggerFactory.getLogger(options.getName());
+        logger = Loggers.getLogger(options.getClass(), "seunjeon");
 
         initAttribute();
         tokenizerHelper = new TokenizerHelper(

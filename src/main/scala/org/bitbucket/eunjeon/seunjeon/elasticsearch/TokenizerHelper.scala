@@ -6,13 +6,13 @@ import java.util.InvalidPropertiesFormatException
 import org.apache.logging.log4j.Logger
 import org.bitbucket.eunjeon.seunjeon._
 import org.bitbucket.eunjeon.seunjeon.Pos.Pos
-import org.elasticsearch.common.logging.ESLoggerFactory
+import org.elasticsearch.common.logging.Loggers
 
 import scala.collection.JavaConverters._
 
 
 object TokenizerHelper {
-  val logger: Logger = ESLoggerFactory.getLogger(TokenizerHelper.getClass.getName)
+  val logger: Logger = Loggers.getLogger(TokenizerHelper.getClass, "seunjeon")
 
   val compress: Boolean = System.getProperty("seunjeon.compress") match {
     case "true" => true
