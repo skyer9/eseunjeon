@@ -1,4 +1,4 @@
-# eseunjeon
+# seunjeon
 
 ## 패키징 방법
 
@@ -13,6 +13,9 @@ sbt script version: 1.3.13
 
 # 사전 빌드(mecab-ko-dic/* -> src/main/resources/*.dat)
 sbt -J-Xmx2G "runMain org.bitbucket.eunjeon.seunjeon.DictBuilder"
+
+# 테스트
+sbt test
 
 # jar 생성
 sbt package

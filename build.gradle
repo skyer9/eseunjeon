@@ -1,0 +1,86 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '6.0.0'
+    id 'java'
+    id 'scala'
+}
+
+sourceCompatibility = 1.8
+compileJava.options.encoding = 'UTF-8'
+
+version = '6.1.4'
+
+shadowJar {
+    dependencies {
+        exclude(dependency('org.elasticsearch:.*.*:.*'))
+        exclude(dependency('org.apache.*:.*:.*'))
+        exclude(dependency('org.hdr.*:.*:.*'))
+        exclude(dependency('org.yaml.*:.*:.*'))
+        exclude(dependency('net.*:.*:.*'))
+        exclude(dependency('joda.*:.*:.*'))
+        exclude(dependency('com.fasterxml.*:.*:.*'))
+        exclude(dependency('com.car.*:.*:.*'))
+        exclude(dependency('com.tdu.*:.*:.*'))
+    }
+    manifest {
+        attributes 'Implementation-Title': 'Elasticsearch ESeunjeon Analyzer Plugin',
+                'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        scala {
+            srcDirs = ['src/main/scala', 'src/main/java']
+        }
+        java {
+            srcDirs = []
+        }
+    }
+    test {
+        scala {
+            srcDirs = ['src/test/scala', 'src/test/java']
+        }
+        java {
+            srcDirs = []
+        }
+    }
+}
+
+scala {
+    zincVersion = "1.3.5"
+}
+
+dependencies {
+    compile group: 'org.elasticsearch', name: 'elasticsearch', version: version
+    compile 'org.scala-lang:scala-library:2.12.10'
+    testCompile "org.scalatest:scalatest_2.12:3.0.0"
+    compile files('eunjeon/target/scala-2.12/seunjeon_2.12-1.5.0.jar')
+    testCompile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.0'
+    testCompile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.0'
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+    compile group: 'org.slf4j', name: 'slf4j-jdk14', version: '1.7.12'
+    compile group: 'com.typesafe.scala-logging', name: 'scala-logging_2.12', version: '3.5.0'
+    testCompile group: 'com.novocode', name: 'junit-interface', version: '0.11'
+}
+
+task buildPluginZip(type: Zip, dependsOn:[':shadowJar']) {
+    baseName = 'eseunjeon-analyzer-plugin'
+    classifier = 'plugin'
+    from files(libsDir) {
+        into('elasticsearch')
+    }
+    from 'include'
+}
+
+artifacts {
+    archives buildPluginZip
+}
+
+[ compileScala, compileTestScala ]*.options*.encoding = 'UTF-8'
+[ compileScala, compileTestScala ]*.options*.compilerArgs = ['-Xlint:-options']
+[ compileJava, compileTestJava ]*.options*.encoding = 'UTF-8'
+[ compileJava, compileTestJava ]*.options*.compilerArgs = ['-Xlint:-options']

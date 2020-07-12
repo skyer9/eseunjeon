@@ -1,4 +1,8 @@
-.idea
+build/
+.gradle/
+.idea/
+.git/
+gradle/
 
 src/main/target
 mecab-ko-dic*
@@ -11,3 +15,4 @@ eunjeon/mecab-ko-dic*
 eunjeon/target
 eunjeon/project/project
 eunjeon/project/target
+eunjeon/*.dat
