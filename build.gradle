@@ -7,7 +7,7 @@ plugins {
 sourceCompatibility = 1.8
 compileJava.options.encoding = 'UTF-8'
 
-version = '6.1.4'
+version = '6.8.10'
 
 shadowJar {
     dependencies {
@@ -70,9 +70,7 @@ dependencies {
 task buildPluginZip(type: Zip, dependsOn:[':shadowJar']) {
     baseName = 'eseunjeon-analyzer'
     classifier = 'plugin'
-    from files(libsDir) {
-        into('elasticsearch')
-    }
+    from files(libsDir)
     from 'include'
 }
 
